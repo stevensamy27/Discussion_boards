@@ -22,11 +22,11 @@ def new_topic(request,board_id):
         message = request.POST['message']
         user = User.objects.first()
 
-        # topic = Topic.objects.create(
-        #     subject = subject,
-        #     board = board_id,
-        #     created_by = user,
-        # )
+        topic = Topic.objects.create(
+            subject = subject,
+            board = board,
+            created_by = user,
+        )
 
         # post = Post.objects.create(
         #     message = message,

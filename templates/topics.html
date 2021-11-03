@@ -10,5 +10,30 @@
 {% endblock %}
 
 {%block content %}
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Topic</th>
+            <th>Created By</th>
+            <th>Posts</th>
+            <th>Views</th>
+            <th>Created Dt</th>
+        </tr>
+        <tbody>
+            {%for topic in board.topics.all%}
+            <tr>
+                <td>{{topic.subject}}</td>
+                <td>{{topic.created_by.username}}</td>
+                <td>0</td>
+                <td>0</td>
+                <td>{{topic.created_dt}}</td>
+
+                
+            </tr>
+            {%endfor%}
+        </tbody>
+    </thead>
+
+</table>
 {% endblock %}
            
