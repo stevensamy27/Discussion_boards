@@ -6,10 +6,11 @@
 
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{% url 'home' %}"> Boards </a></li>
-    <li class="breadcrumb-item active">{{board.name}}</li>
+    <li class="breadc   rumb-item active">{{board.name}}</li>
 {% endblock %}
 
 {%block content %}
+<a href="{%url 'new_topic' board.pk %}" class="btn btn-primary">new topic</a>
 <table class="table">
     <thead class="thead-dark">
         <tr>
