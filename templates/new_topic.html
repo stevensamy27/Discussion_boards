@@ -6,12 +6,13 @@
   <li class="breadcrumb-item"><a href="{% url 'home' %}">Boards</a></li>
   <li class="breadcrumb-item"><a href="{% url 'board_topics' board.pk %}">{{ board.name }}</a></li>
   <li class="breadcrumb-item active">New topic</li>
-{% endblock %}
+{% endblock %}  
 
 {% block content %}
   <form method="post" novalidate>
     {% csrf_token %}
-    {{form.as_p}}
+    {% include 'include/form.html' %}
+    
     <button type="submit" class="btn btn-success">Add</button>
   </form>
 {% endblock %}
