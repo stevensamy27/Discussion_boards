@@ -1,8 +1,8 @@
 # from functools import _Descriptor
 from django.db import models
 from django.contrib.auth.models import  User
-from django.db.models.constraints import BaseConstraint
-from django.db.models.fields import TextField
+# from django.db.models.constraints import BaseConstraint
+# from django.db.models.fields import TextField
 
 # Create your models here.
 class Board(models.Model):
