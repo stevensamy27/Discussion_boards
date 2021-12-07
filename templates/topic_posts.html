@@ -8,6 +8,9 @@
 {% endblock %}
 
 {%block content %}
+<div class="mb-4">
+  <a href="#"  class="btn btn-primary" > Reply </a>
+</div>
 
 <div class="card mb-2">
     <div class="card-body p-3">
@@ -25,11 +28,9 @@
             </div>
           </div>
           Hello World
-          {% if post.created_by == user %}
             <div class="mt-3">
               <a href="#" class="btn btn-primary btn-sm" role="button">Edit</a>
             </div>
-          {% endif %}
         </div>
       </div>
     </div>

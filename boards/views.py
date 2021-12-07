@@ -1,6 +1,6 @@
 # from typing_extensions import ParamSpecKwargs
 from django.core.checks import messages
-from .forms import NewTopicForm
+from .forms import NewTopicForm,PostForm
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, response
 from .models import Board, Topic
@@ -8,7 +8,12 @@ from django.contrib.auth.models import  User
 from.models import Topic,Post
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
+def about(request):
+
+    return HttpResponse(request,"yes")
+
 def home(request):
     boards = Board.objects.all()
     return render(request,'home.html', {'boards':boards})
@@ -50,7 +55,23 @@ def topic_posts(request, board_id, topic_id):
     topic = get_object_or_404(Topic, board__pk=board_id, pk=topic_id)
     return render(request,'topic_posts.html',{'topic':topic})
 
+@login_required
+def reply_topic(request, board_id, topic_id):
+    topic = get_object_or_404(Topic, board__pk=board_id, pk=topic_id)
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.topic = topic
+            post.created_by = request.user
+            post.save()
 
-def about(request):
+            
+            return redirect('topic_posts',board_id=board.id, topic_id=tpic_pk)
 
-    return HttpResponse(request,"yes")
+    else:
+        form = PostForm()
+    return render (request, 'reply_topic.html', {'topic': topic, 'form':form})
+
+
+
